@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="kr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css"
+    />
+    <title>Bulletin Board</title>
+  </head>
+  <body>
+    <nav class="nav">
+      <ul>
+        <li id="main-title"><strong>Flask Bulletin Board</strong></li>
+        <li><a href="/">메인</a></li>
+        <li><a href="/board">게시판</a></li>
+      </ul>
+      <ul>
+        <li id="main-menu">
+          <details role="list" dir="rtl">
+            <summary aria-haspopup="listbox" role="link">
+              <strong>Menu</strong>
+            </summary>
+            <ul role="listbox">
+              <li><a href="/login">로그인</a></li>
+              <li><a href="/register">회원가입</a></li>
+            </ul>
+          </details>
+        </li>
+      </ul>
+    </nav>
+    <div class="board-table">
+      <table role="grid">
+        <thead>
+          <tr>
+            <th scope="col" class="table-col-style">No.</th>
+            <th scope="col" class="table-col-style">글 제목</th>
+            <th scope="col" class="table-col-style">글쓴이</th>
+            <th scope="col" class="table-col-style">수정일시</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <th>홍길동은 부산 사람이다.</th>
+            <th>홍길동</th>
+            <th>2023-04-04 18:06:27</th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

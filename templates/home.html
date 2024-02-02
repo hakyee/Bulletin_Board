@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="kr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css"
+    />
+    <title>Bulletin Board</title>
+  </head>
+  <body>
+    <nav class="nav">
+      <ul>
+        <li id="main-title"><strong>Flask Bulletin Board</strong></li>
+        <li><a href="/">메인</a></li>
+        <li><a href="/board">게시판</a></li>
+      </ul>
+      <ul>
+        <li id="main-menu">
+          <details role="list" dir="rtl">
+            <summary aria-haspopup="listbox" role="link">
+              <strong>Menu</strong>
+            </summary>
+            <ul role="listbox">
+              <li><a href="/login">로그인</a></li>
+              <li><a href="/register">회원가입</a></li>
+            </ul>
+          </details>
+        </li>
+      </ul>
+    </nav>
+    <div class="main">
+      <div class="main-content-head">
+        <h1>게시판 사이트</h1>
+      </div>
+      <div class="main-content-body">
+        <span>Flask 웹 프레임워크로 제작한 간단한 게시판 사이트</span>
+      </div>
+    </div>
+  </body>
+</html>

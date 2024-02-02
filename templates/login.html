@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="kr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/login-register-form.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css"
+    />
+    <title>로그인 페이지</title>
+  </head>
+  <body>
+    <nav class="nav">
+      <ul>
+        <li id="main-title"><strong>Flask Bulletin Board</strong></li>
+        <li><a href="/">메인</a></li>
+        <li><a href="/board">게시판</a></li>
+      </ul>
+    </nav>
+    <form action="/" class="login-register-form">
+      <h1>로그인</h1>
+      <input required type="text" name="id" placeholder="ID" />
+      <input required type="password" name="password" placeholder="password" />
+      <button>로그인</button>
+    </form>
+  </body>
+</html>
