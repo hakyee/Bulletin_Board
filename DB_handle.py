@@ -37,3 +37,7 @@ class DBModule:
                     return 0
         except:
             return -1
+    
+    def get_userdata(self, id_):
+        users = self.db.child("users").get().val()
+        return users[id_]

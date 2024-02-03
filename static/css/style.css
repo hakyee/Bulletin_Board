@@ -24,6 +24,10 @@
   background-color: rgba(71, 69, 69, 0.11);
 }
 
+.content-head {
+  margin-bottom: 10px;
+}
+
 .board-table {
   margin-left: 40px;
   margin-right: 40px;

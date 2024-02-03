@@ -39,10 +39,15 @@
       </ul>
     </nav>
     <div class="main">
-      <div class="main-content-head">
+      <div>
+        {% if user != "False" %}
+        <h1 class="content-head">게시판 사이트</h1>
+        <h2>{{u_data["user_name"]}}님 환영합니다!</h2>
+        {% else %}
         <h1>게시판 사이트</h1>
+        {% endif %}
       </div>
-      <div class="main-content-body">
+      <div>
         <span>Flask 웹 프레임워크로 제작한 간단한 게시판 사이트</span>
       </div>
     </div>

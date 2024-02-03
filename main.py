@@ -7,11 +7,13 @@ DB = DBModule()
 
 @app.route("/")
 def home():
+    u_data = []
     if "user_id" in session:
         user = session["user_id"]
+        u_data = DB.get_userdata(user)
     else:
         user = "False"
-    return render_template("home.html", user=user)
+    return render_template("home.html", user=user, u_data=u_data)
 
 @app.route("/board")
 def board():
@@ -47,6 +49,8 @@ def login_action():
 
 @app.route("/register")
 def register():
+    if "user_id" in session:
+        return redirect(url_for("home"))
     return render_template("register.html")
 
 @app.route("/register_action", methods=["get"])
@@ -56,6 +60,7 @@ def register_action():
     user_name = request.args.get("name")
     user_email = request.args.get("email")
     if DB.register(user_id, user_passward, user_name, user_email):
+        session["user_id"] = user_id
         return redirect(url_for("home"))
     else:
         flash("이미 존재하는 아이디 입니다.")
