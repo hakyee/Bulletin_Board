@@ -15,7 +15,6 @@ class DBModule:
                 return False
         return True
 
-
     def register(self, id_, password, name, email):
         user_data = { 
             "user_password": password,
@@ -27,3 +26,14 @@ class DBModule:
             return True
         else:
             return False
+        
+    def login_verification(self, id_, password):
+        users = self.db.child("users").get().val()
+        try:
+            if users[id_]:
+                if password == users[id_]["user_password"]:
+                    return 1
+                else:
+                    return 0
+        except:
+            return -1
