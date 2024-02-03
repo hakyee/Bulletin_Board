@@ -17,7 +17,13 @@ def home():
 
 @app.route("/board")
 def board():
-    return render_template("board.html")
+    u_data = []
+    if "user_id" in session:
+        user = session["user_id"]
+        u_data = DB.get_userdata(user)
+    else:
+        user = "False"
+    return render_template("board.html", user=user, u_data=u_data)
 
 @app.route("/logout")
 def logout():
@@ -65,5 +71,19 @@ def register_action():
     else:
         flash("이미 존재하는 아이디 입니다.")
         return redirect(url_for("register"))
+    
+@app.route("/write")
+def write():
+    u_data = []
+    if "user_id" in session:
+        user = session["user_id"]
+        u_data = DB.get_userdata(user)
+        return render_template("write.html", user=user, u_data=u_data)
+    else:
+        return redirect(url_for("login"))
+
+@app.route("/write_action", methods=["post"])
+def write_action():
+    print("hello")
 
 app.run("127.0.0.1", debug=True)

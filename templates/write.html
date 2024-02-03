@@ -9,13 +9,9 @@
     />
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/login-register-form.css') }}"
-    />
-    <link
-      rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css"
     />
-    <title>로그인 페이지</title>
+    <title>글쓰기 페이지</title>
   </head>
   <body>
     <nav class="nav">
@@ -31,23 +27,27 @@
               <strong>Menu</strong>
             </summary>
             <ul role="listbox">
+              {% if user != "False" %}
+              <li><a href="/logout">로그아웃</a></li>
+              {% else %}
               <li><a href="/login">로그인</a></li>
               <li><a href="/register">회원가입</a></li>
+              {% endif %}
             </ul>
           </details>
         </li>
       </ul>
     </nav>
-    <form action="{{url_for("login_action")}}" class="login-register-form" method="get">
-      <h1>로그인</h1>
-      <input required type="text" name="id" placeholder="ID" />
-      <input required type="password" name="password" placeholder="password" />
-      <button>로그인</button>
-      {% with messages = get_flashed_messages() %}
-        {% if messages %}
-          <p class="error-style">{{messages[0]}}</p>
-        {% endif %}
-      {% endwith %}
+    <form action="{{url_for('write_action')}}" method="post" class="write-form">
+      <p class="write-head">글 작성</p>
+      <span class="write-category">제목</span>
+      <input type="text" name="title" id="title" placeholder="제목" required />
+      <span class="write-category">본문</span>
+      <textarea name="content" id="content" rows="15" required>
+ 내용을 입력하세요.</textarea
+      >
+      <button class="commit">작성</button>
+      <button class="commit">수정</button>
     </form>
   </body>
 </html>

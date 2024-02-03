@@ -24,6 +24,19 @@
         <li><a href="/">메인</a></li>
         <li><a href="/board">게시판</a></li>
       </ul>
+      <ul>
+        <li id="main-menu">
+          <details role="list" dir="rtl">
+            <summary aria-haspopup="listbox" role="link">
+              <strong>Menu</strong>
+            </summary>
+            <ul role="listbox">
+              <li><a href="/login">로그인</a></li>
+              <li><a href="/register">회원가입</a></li>
+            </ul>
+          </details>
+        </li>
+      </ul>
     </nav>
     <form action="{{url_for("register_action")}}" class="login-register-form" method="get">
       <h1>회원가입</h1>
