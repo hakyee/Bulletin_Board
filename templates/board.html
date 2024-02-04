@@ -49,9 +49,9 @@
           </tr>
         </thead>
         <tbody>
-          {% if p_data %} {% for post in p_data %}
+          {% if p_data %} {% for index, post in enumerate(p_data) %}
           <tr>
-            <th scope="row">1</th>
+            <th scope="row">{{index + 1}}</th>
             <th>
               <a href="{{url_for('view', post_id=post[0])}}"
                 >{{post[1]["title"]}}</a
@@ -63,6 +63,25 @@
           {% endfor %} {% endif %}
         </tbody>
       </table>
+      <div class="page">
+        {% if page > 1 %}
+        <button
+          class="page-btn"
+          onclick="location.href='{{url_for('board', page=page-1)}}'"
+        >
+          이전
+        </button>
+        {% endif %}
+        <span>Page {{page}} of {{total_pages}}</span>
+        {% if page < total_pages %}
+        <button
+          class="page-btn"
+          onclick="location.href='{{url_for('board', page=page+1)}}'"
+        >
+          다음
+        </button>
+        {% endif %}
+      </div>
       <button class="commit" onclick="location.href='{{url_for('write')}}'">
         작성
       </button>

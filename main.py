@@ -24,11 +24,17 @@ def board():
     else:
         p_data = sorted(p_data.items(), key=lambda x: x[1]["write_time"], reverse=True)
         p_count = len(p_data)
+        page = request.args.get('page', 1, type=int)
+        per_page = 15
+        start = (page - 1) * per_page
+        end = start + per_page
+        total_pages = (p_count + per_page - 1) // per_page
+        items_on_page = p_data[start:end]
     if "user_id" in session:
         user = session["user_id"]
     else:
         user = "False"
-    return render_template("board.html", user=user, p_data=p_data, p_count=p_count)
+    return render_template("board.html", user=user, p_data=items_on_page, page=page, total_pages=total_pages, enumerate=enumerate)
 
 @app.route("/logout")
 def logout():
