@@ -1,4 +1,4 @@
-  # Bulletin_Board / 게시판 만들기
+# Bulletin_Board / 게시판 만들기
 
 회원가입 및 로그인 구현 || 세션 관리 || 글 작성/수정/삭제 기능 구현
 
@@ -21,6 +21,7 @@ VSCode, Python
 ```
 pip install setuptools
 pip install flask
+pip install flask-paginate
 pip install pyrebase4
 
 ```
@@ -36,6 +37,5 @@ pip install pyrebase4
 ```
 예시
 ```
-
 
 ![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=silizard&show_icons=true&theme=radical)
