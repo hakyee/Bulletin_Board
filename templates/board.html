@@ -63,9 +63,9 @@
           {% endfor %} {% endif %}
         </tbody>
       </table>
-      <form action="{{url_for('write')}}">
-        <button class="commit">작성</button>
-      </form>
+      <button class="commit" onclick="location.href='{{url_for('write')}}'">
+        작성
+      </button>
     </div>
   </body>
 </html>

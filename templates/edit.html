@@ -11,7 +11,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css"
     />
-    <title>글쓰기 페이지</title>
+    <title>글수정 페이지</title>
   </head>
   <body>
     <nav class="nav">
@@ -38,13 +38,18 @@
         </li>
       </ul>
     </nav>
-    <form action="{{url_for('write_action')}}" method="get" class="write-form">
-      <p class="write-head">글 작성</p>
+    <form
+      action="{{url_for('edit_action', p_id=post_id)}}"
+      method="get"
+      class="write-form"
+    >
+      <p class="write-head">글 수정</p>
       <span class="write-category">제목</span>
-      <input type="text" name="title" id="title" placeholder="제목" required />
+      <input type="text" name="title" id="title" placeholder="제목"
+      value="{{p_detail["title"]}}" required />
       <span class="write-category">본문</span>
       <textarea name="contents" class="contents" rows="15" required>
- 내용을 입력하세요.</textarea
+{{p_detail["contents"]}}</textarea
       >
       <button class="commit">작성</button>
     </form>

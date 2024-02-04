@@ -48,8 +48,16 @@
       <textarea class="contents" rows="15" readonly>
 {{p_detail["contents"]}}</textarea
       >
+      <button class="commit" onclick="location.href='{{url_for('board')}}'">
+        목록
+      </button>
       {% if user == p_detail["user_id"] %}
-      <button class="commit">수정</button>
+      <button
+        class="commit"
+        onclick="location.href='{{url_for('edit', p_id=post_id)}}'"
+      >
+        수정
+      </button>
       {% endif %}
     </div>
   </body>

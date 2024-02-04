@@ -103,6 +103,26 @@ def view(post_id):
     else:
         user = "False"
     post_detail = DB.get_post_detail(post_id)
-    return render_template("view.html", user=user, p_detail=post_detail)
+    return render_template("view.html", user=user, p_detail=post_detail, post_id=post_id)
+
+@app.route("/edit/<string:p_id>")
+def edit(p_id):
+    if "user_id" in session:
+        user = session["user_id"]
+        post_detail = DB.get_post_detail(p_id)
+        if user == post_detail["user_id"]:
+            return render_template("edit.html", p_detail=post_detail, post_id=p_id)
+        else:
+            return redirect(url_for("board"))
+    else:
+        return redirect(url_for("board"))
+    
+@app.route("/edit_action/<string:p_id>", methods=["get"])
+def edit_action(p_id):
+    title = request.args.get("title")
+    contents = request.args.get("contents")
+    write_time = time.strftime('%Y-%m-%d %H:%M:%S')
+    DB.edit(p_id, title, contents, write_time)
+    return redirect(url_for("board"))
 
 app.run("127.0.0.1", debug=True)

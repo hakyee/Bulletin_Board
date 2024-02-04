@@ -60,3 +60,8 @@ class DBModule:
     
     def get_post_detail(self, post_id):
         return self.db.child("posts").get().val()[post_id]
+    
+    def edit(self, post_id, title, contents, write_time):
+        self.db.child("posts").child(post_id).update({"title": title})
+        self.db.child("posts").child(post_id).update({"contents": contents})
+        self.db.child("posts").child(post_id).update({"write_time": write_time})
