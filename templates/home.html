@@ -2,7 +2,10 @@
 <html lang="kr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="wclassth=device-wclassth, initial-scale=1.0"
+    />
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='css/style.css') }}"
@@ -41,14 +44,17 @@
     <div class="main">
       <div>
         {% if user != "False" %}
-        <h1 class="content-head">게시판 사이트</h1>
-        <h2>{{u_data["user_name"]}}님 환영합니다!</h2>
+        <h1 class="content-head head-font">게시판 사이트 :</h1>
+        <h2 class="head-font">{{u_data["user_name"]}}님 환영합니다!</h2>
         {% else %}
-        <h1>게시판 사이트</h1>
+        <h1 class="head-font">게시판 사이트</h1>
         {% endif %}
       </div>
       <div>
-        <span>Flask 웹 프레임워크로 제작한 간단한 게시판 사이트</span>
+        <span class="main-content">Flask 웹 프레임워크로 제작</span>
+        <p class="main-content">
+          로그인 / 회원가입 / 글(작성, 수정, 삭제) 기능 구현
+        </p>
       </div>
     </div>
   </body>

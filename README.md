@@ -21,7 +21,6 @@ VSCode, Python
 ```
 pip install setuptools
 pip install flask
-pip install flask-paginate
 pip install pyrebase4
 
 ```

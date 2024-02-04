@@ -66,7 +66,7 @@
       <div class="page">
         {% if page > 1 %}
         <button
-          class="page-btn"
+          class="page-btn btn-font"
           onclick="location.href='{{url_for('board', page=page-1)}}'"
         >
           이전
@@ -75,14 +75,17 @@
         <span>Page {{page}} of {{total_pages}}</span>
         {% if page < total_pages %}
         <button
-          class="page-btn"
+          class="page-btn btn-font"
           onclick="location.href='{{url_for('board', page=page+1)}}'"
         >
           다음
         </button>
         {% endif %}
       </div>
-      <button class="commit" onclick="location.href='{{url_for('write')}}'">
+      <button
+        class="commit btn-font"
+        onclick="location.href='{{url_for('write')}}'"
+      >
         작성
       </button>
     </div>

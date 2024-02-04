@@ -1,11 +1,15 @@
+@import url("http://fonts.googleapis.com/earlyaccess/hanna.css");
+@import url("https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap");
+
 .nav {
+  font-family: "Hanna";
   margin-bottom: 1em;
   background-color: rgba(58, 60, 61, 0.096);
 }
 
 #main-title {
   font-size: 30px;
-  margin-left: 20px;
+  margin-left: 25px;
 }
 
 #main-menu {
@@ -13,7 +17,12 @@
   margin-right: 20px;
 }
 
+.main-content {
+  font-size: 30px;
+}
+
 .main {
+  font-family: "Hanna";
   display: flex;
   flex-direction: column;
   border-radius: 20px;
@@ -26,7 +35,16 @@
 }
 
 .content-head {
+  display: inline-block;
   margin-bottom: 10px;
+  margin-right: 20px;
+}
+
+.head-font {
+  display: inline-block;
+  font-family: "Black Han Sans";
+  font-weight: lighter;
+  font-size: 50px;
 }
 
 .board-table {
@@ -87,4 +105,8 @@
   width: 75px;
   height: 50px;
   font-size: 15px;
+}
+
+.btn-font {
+  font-weight: 600;
 }
