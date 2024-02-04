@@ -2,7 +2,7 @@
 
 회원가입 및 로그인 구현 || 세션 관리 || 글 작성/수정/삭제 기능 구현
 
-## Getting Started / 어떻게 시작하나요?
+## Required /
 
 ### Prerequisites / 선행 조건
 
