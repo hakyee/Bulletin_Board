@@ -65,3 +65,6 @@ class DBModule:
         self.db.child("posts").child(post_id).update({"title": title})
         self.db.child("posts").child(post_id).update({"contents": contents})
         self.db.child("posts").child(post_id).update({"write_time": write_time})
+
+    def delete_post(self, post_id):
+        self.db.child("posts").child(post_id).remove()

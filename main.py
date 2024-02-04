@@ -125,4 +125,17 @@ def edit_action(p_id):
     DB.edit(p_id, title, contents, write_time)
     return redirect(url_for("board"))
 
+@app.route("/delete_action/<string:p_id>")
+def delete_action(p_id):
+    if "user_id" in session:
+        user = session["user_id"]
+        post_detail = DB.get_post_detail(p_id)
+        if user == post_detail["user_id"]:
+            DB.delete_post(p_id)
+            return redirect(url_for("board"))
+        else:
+            return redirect(url_for("board"))
+    else:
+        return redirect(url_for("board"))
+
 app.run("127.0.0.1", debug=True)
