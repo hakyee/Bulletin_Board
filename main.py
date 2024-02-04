@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 from DB_handle import DBModule
+import time
 
 app = Flask("BulletinBoard")
 app.secret_key = "Bulletin_Board_Skey"
@@ -17,13 +18,17 @@ def home():
 
 @app.route("/board")
 def board():
-    u_data = []
+    p_data = DB.get_postdata()
+    if p_data == None:
+        p_count = 0
+    else:
+        p_data = sorted(p_data.items(), key=lambda x: x[1]["write_time"], reverse=True)
+        p_count = len(p_data)
     if "user_id" in session:
         user = session["user_id"]
-        u_data = DB.get_userdata(user)
     else:
         user = "False"
-    return render_template("board.html", user=user, u_data=u_data)
+    return render_template("board.html", user=user, p_data=p_data, p_count=p_count)
 
 @app.route("/logout")
 def logout():
@@ -82,8 +87,22 @@ def write():
     else:
         return redirect(url_for("login"))
 
-@app.route("/write_action", methods=["post"])
+@app.route("/write_action", methods=["get"])
 def write_action():
-    print("hello")
+    title = request.args.get("title")
+    contents = request.args.get("contents")
+    write_time = time.strftime('%Y-%m-%d %H:%M:%S')
+    user = session["user_id"]
+    DB.write(user, title, contents, write_time)
+    return redirect(url_for("board"))
+
+@app.route("/view/<string:post_id>")
+def view(post_id):
+    if "user_id" in session:
+        user = session["user_id"]
+    else:
+        user = "False"
+    post_detail = DB.get_post_detail(post_id)
+    return render_template("view.html", user=user, p_detail=post_detail)
 
 app.run("127.0.0.1", debug=True)

@@ -2,7 +2,7 @@
 <html lang="kr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" post="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='css/style.css') }}"
@@ -49,12 +49,18 @@
           </tr>
         </thead>
         <tbody>
+          {% if p_data %} {% for post in p_data %}
           <tr>
             <th scope="row">1</th>
-            <th>홍길동은 부산 사람이다.</th>
-            <th>홍길동</th>
-            <th>2023-04-04 18:06:27</th>
+            <th>
+              <a href="{{url_for('view', post_id=post[0])}}"
+                >{{post[1]["title"]}}</a
+              >
+            </th>
+            <th>{{post[1]["user_name"]}}</th>
+            <th>{{post[1]["write_time"]}}</th>
           </tr>
+          {% endfor %} {% endif %}
         </tbody>
       </table>
       <form action="{{url_for('write')}}">
