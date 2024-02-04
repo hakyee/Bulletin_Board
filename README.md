@@ -24,5 +24,3 @@ pip install flask
 pip install pyrebase4
 
 ```
-
-![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=silizard&show_icons=true&theme=radical)
